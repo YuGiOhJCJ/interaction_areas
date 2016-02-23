@@ -15,38 +15,109 @@
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
 dofile(minetest.get_modpath("interaction_areas") .. "/interaction_areas.lua")
 dofile(minetest.get_modpath("interaction_areas") .. "/minetest.lua")
-minetest.register_chatcommand("interaction_areas", {
-	params = "add [<position_x> [<position_y> [<position_z>]]] <player_name> [<dimension_x> [<dimension_y> [<dimension_z>]]] | help <command> | remove [<interaction_area_id> | all] | show [<interaction_area_id> | all] | version",
-	description = "Manage interaction areas",
-	privs = {interaction_areas = true},
+minetest.register_chatcommand("interaction_areas_add", {
+	params = "[<position_x> [<position_y> [<position_z>]]] <owner_name> [<dimension_x> [<dimension_y> [<dimension_z>]]]",
+	description = "Add an interaction area to the existing interaction areas",
+	privs = {interaction_areas_admin = true},
 	func = function(name, param)
-		local param_add_position_x, param_add_position_y, param_add_position_z, param_add_player_name, param_add_dimension_x, param_add_dimension_y, param_add_dimension_z = string.match(param, "^%s*add%s*(%-?%d*)%s*(%-?%d*)%s*(%-?%d*)%s*(%w+)%s*(%-?%d*)%s*(%-?%d*)%s*(%-?%d*)%s*$")
-		local param_help = string.match(param, "^%s*help%s*(%l+)%s*$")
-		local param_remove = string.match(param, "^%s*remove%s*(%w*)%s*$")
-		local param_show = string.match(param, "^%s*show%s*(%w*)%s*$")
-		local param_version = string.match(param, "^%s*version%s*$")
-		if param_add_position_x ~= nil
-			or param_add_position_y ~= nil
-			or param_add_position_z ~= nil
-			or param_add_player_name ~= nil
-			or param_add_dimension_x ~= nil
-			or param_add_dimension_y ~= nil
-			or param_add_dimension_z ~= nil then
-			interaction_areas.add(name, param_add_position_x, param_add_position_y, param_add_position_z, param_add_player_name, param_add_dimension_x, param_add_dimension_y, param_add_dimension_z)
-		elseif param_help ~= nil then
-			interaction_areas.help(name, param_help)
-		elseif param_remove ~= nil
-			and (param_remove == "" or tonumber(param_remove) ~= nil or param_remove == "all") then
-			interaction_areas.remove(name, param_remove)
-		elseif param_show ~= nil
-			and (param_show == "" or tonumber(param_show) ~= nil or param_show == "all") then
-			interaction_areas.show(name, param_show)
-		elseif param_version ~= nil then
-			interaction_areas.version(name)
+		local position_x, position_y, position_z, owner_name, dimension_x, dimension_y, dimension_z = string.match(param, "^%s*(%-?%d*)%s*(%-?%d*)%s*(%-?%d*)%s*(%w+)%s*(%-?%d*)%s*(%-?%d*)%s*(%-?%d*)%s*$")
+		if position_x ~= nil
+			and position_y ~= nil
+			and position_z ~= nil
+			and owner_name ~= nil
+			and dimension_x ~= nil
+			and dimension_y ~= nil
+			and dimension_z ~= nil then
+			interaction_areas.add(name, position_x, position_y, position_z, owner_name, dimension_x, dimension_y, dimension_z)
 		else
-			interaction_areas.print(name, "Invalid parameters (see /help interaction_areas)")
+			interaction_areas.print(name, "Invalid parameters (see /help interaction_areas_add)")
 		end
 	end
 })
-minetest.register_privilege("interaction_areas", "Can use the interaction_areas command")
+minetest.register_chatcommand("interaction_areas_add_player", {
+	params = "<player_name> [<interaction_area_id> | all]",
+	description = "Add a player to one or more existing interaction areas",
+	privs = {interaction_areas_user = true},
+	func = function(name, param)
+		local player_name, interaction_area_id = string.match(param, "^%s*(%w+)%s*(%w*)%s*$")
+		if player_name ~= nil
+			and interaction_area_id ~= nil
+			and (interaction_area_id == "" or tonumber(interaction_area_id) ~= nil or interaction_area_id == "all") then
+			interaction_areas.add_player(name, player_name, interaction_area_id)
+		else
+			interaction_areas.print(name, "Invalid parameters (see /help interaction_areas_add_player)")
+		end
+	end
+})
+minetest.register_chatcommand("interaction_areas_help", {
+	params = "<command>",
+	description = "Show the help for an interaction_areas command",
+	privs = {interaction_areas_user = true},
+	func = function(name, param)
+		local command = string.match(param, "^%s*([%l_]+)%s*$")
+		if command ~= nil then
+			interaction_areas.help(name, command)
+		else
+			interaction_areas.print(name, "Invalid parameters (see /help interaction_areas_help)")
+		end
+	end
+})
+minetest.register_chatcommand("interaction_areas_remove", {
+	params = "[<interaction_area_id> | all]",
+	description = "Remove one or more interaction areas from the existing interaction areas",
+	privs = {interaction_areas_admin = true},
+	func = function(name, param)
+		local interaction_area_id = string.match(param, "^%s*(%w*)%s*$")
+		if interaction_area_id ~= nil
+			and (interaction_area_id == "" or tonumber(interaction_area_id) ~= nil or interaction_area_id == "all") then
+			interaction_areas.remove(name, interaction_area_id)
+		else
+			interaction_areas.print(name, "Invalid parameters (see /help interaction_areas_remove)")
+		end
+	end
+})
+minetest.register_chatcommand("interaction_areas_remove_player", {
+	params = "<player_name> [<interaction_area_id> | all]",
+	description = "Remove a player from one or more existing interaction areas",
+	privs = {interaction_areas_user = true},
+	func = function(name, param)
+		local player_name, interaction_area_id = string.match(param, "^%s*(%w+)%s*(%w*)%s*$")
+		if player_name ~= nil
+			and interaction_area_id ~= nil
+			and (interaction_area_id == "" or tonumber(interaction_area_id) ~= nil or interaction_area_id == "all") then
+			interaction_areas.remove_player(name, player_name, interaction_area_id)
+		else
+			interaction_areas.print(name, "Invalid parameters (see /help interaction_areas_remove_player)")
+		end
+	end
+})
+minetest.register_chatcommand("interaction_areas_show", {
+	params = "[<interaction_area_id> | all]",
+	description = "Show one or more interaction areas",
+	privs = {interaction_areas_user = true},
+	func = function(name, param)
+		local interaction_area_id = string.match(param, "^%s*(%w*)%s*$")
+		if interaction_area_id ~= nil
+			and (interaction_area_id == "" or tonumber(interaction_area_id) ~= nil or interaction_area_id == "all") then
+			interaction_areas.show(name, interaction_area_id)
+		else
+			interaction_areas.print(name, "Invalid parameters (see /help interaction_areas_show)")
+		end
+	end
+})
+minetest.register_chatcommand("interaction_areas_version", {
+	params = "",
+	description = "Show the interaction_areas version",
+	privs = {interaction_areas_user = true},
+	func = function(name, param)
+		local result = string.match(param, "^%s*$")
+		if result ~= nil then
+			interaction_areas.version(name)
+		else
+			interaction_areas.print(name, "Invalid parameters (see /help interaction_areas_version)")
+		end
+	end
+})
+minetest.register_privilege("interaction_areas_admin", "Can use the administrator interaction_areas commands, interact with all interaction areas and manage players of all interaction areas")
+minetest.register_privilege("interaction_areas_user", "Can use the user interaction_areas commands")
 interaction_areas.load()
