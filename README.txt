@@ -6,40 +6,45 @@ interaction_areas
  * Mod dependencies: none
  * Report bugs or request help using my contact address
 
+ This is a minetest mod to manage interaction areas.
+
+ See the AUTHORS.txt file for the contact address.
+ See the ChangeLog.txt file for the history of the changes.
+ See the description.txt file for the description.
+ See the INSTALL.txt file for the instructions on how to install.
+ See the LICENSE.txt file for the license.
+ See the TODO.txt file for the list of tasks left to do.
+
  Table of contents
   1. Privileges
   2. Commands
    2.1. Administrator commands
    2.2. User commands
 
- This is a minetest mod to manage interaction areas.
-
  1. Privileges
 
-  This minetest mod add two privileges:
+  This minetest mod adds two privileges:
    * interaction_areas_admin
    * interaction_areas_user
 
   If you grant the interaction_areas_admin privilege to a player, he can:
-   * Use the administrator interaction_areas commands
+   * Use the administrator interaction_areas commands (see section 2.1)
    * Interact with all interaction areas
    * Manage players of all interaction areas
 
   If you grant the interaction_areas_user privilege to a player, he can:
-   * Use the user interaction_areas commands
-   * Interact with all interaction areas
-   * Manage players of all interaction areas
+   * Use the user interaction_areas commands (see section 2.2)
 
   In singleplayer mode, these two privileges are enabled by default.
   You can check that by pressing the F10 key and typing: "/privs".
 
   In client/server mode, it is recommended to give both privileges to the server administrator(s) and only the interaction_areas_user to normal users.
   You can grant these privileges by pressing the F10 key and typing "/grant <player_name> <privilege>".
-  It is recommended to edit the "minetest.conf" file of minetest to add the interaction_areas_user privilege as a default privilege: "default_privs = interact, shout, give, teleport, interaction_areas_user".
+  It is recommended to edit the "minetest.conf" file of minetest to add the interaction_areas_user privilege as a default privilege: "default_privs = interact, shout, interaction_areas_user".
 
  2. Commands
 
-  This minetest mod add seven commands.
+  This minetest mod adds seven commands.
   Two of them are the administrator interaction_areas commands:
    * interaction_areas_add
    * interaction_areas_remove
@@ -105,15 +110,3 @@ interaction_areas
     * Usage: /interaction_areas_version
     * Description: Show the interaction_areas version
     * Parameters: none
-
- See the AUTHORS.txt file for the contact address.
-
- See the ChangeLog.txt file for the history of the changes.
-
- See the description.txt file for the description.
-
- See the INSTALL.txt file for the instructions on how to install.
-
- See the LICENSE.txt file for the license.
-
- See the TODO.txt file for the list of things left to do.

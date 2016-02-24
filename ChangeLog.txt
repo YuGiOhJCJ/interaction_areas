@@ -1,3 +1,37 @@
+2016-02-24  YuGiOhJCJ  <yugiohjcj@1s.fr>
+
+	* README.txt: Move the description above the table of contents.
+
+	* README.txt: Move the reference to the AUTHORS.txt file below the description.
+
+	* README.txt: Move the reference to the ChangeLog.txt file below the description.
+
+	* README.txt: Move the reference to the description.txt file below the description.
+
+	* README.txt: Move the reference to the INSTALL.txt file below the description.
+
+	* README.txt: Move the reference to the LICENSE.txt file below the description.
+
+	* README.txt: Move the reference to the TODO.txt file below the description.
+
+	* README.txt: Replace "list of things left to do" by "list of tasks left to do".
+
+	* README.txt: Replace "This minetest mod add" by "This minetest mod adds".
+
+	* README.txt: Remove the "Interact with all interaction areas" item for the interaction_areas_user privilege.
+
+	* README.txt: Remove the "Manage players of all interaction areas" item for the interaction_areas_user privilege.
+
+	* README.txt: Add a reference to section 2.1 in section 1.
+
+	* README.txt: Add a reference to section 2.2 in section 1.
+
+	* README.txt: Replace "interact, shout, give, teleport, interaction_areas_user" by "interact, shout, interaction_areas_user".
+
+	* TODO.txt: Add the "Accept the "/interaction_areas_help" command" task.
+
+	* TODO.txt: Add the "Accept the "Accept the "/interaction_areas_help all" command" task.
+
 2016-02-23  YuGiOhJCJ  <yugiohjcj@1s.fr>
 
 	* README.txt: Remove the underlines.

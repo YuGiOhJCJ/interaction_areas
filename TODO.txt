@@ -1,0 +1,2 @@
+Accept the "/interaction_areas_help" command.
+Accept the "/interaction_areas_help all" command.
