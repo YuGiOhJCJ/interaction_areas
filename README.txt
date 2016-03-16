@@ -38,7 +38,7 @@ interaction_areas
   In singleplayer mode, these two privileges are enabled by default.
   You can check that by pressing the F10 key and typing: "/privs".
 
-  In client/server mode, it is recommended to give both privileges to the server administrator(s) and only the interaction_areas_user to normal users.
+  In client/server mode, it is recommended to give both privileges to the server administrator(s) and only the interaction_areas_user privilege to normal users.
   You can grant these privileges by pressing the F10 key and typing "/grant <player_name> <privilege>".
   It is recommended to edit the "minetest.conf" file of minetest to add the interaction_areas_user privilege as a default privilege: "default_privs = interact, shout, interaction_areas_user".
 

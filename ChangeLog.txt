@@ -1,3 +1,7 @@
+2016-03-16  YuGiOhJCJ  <yugiohjcj@1s.fr>
+
+	* README.txt: Replace "the interaction_areas_user" by "the interaction_areas_user privilege".
+
 2016-02-24  YuGiOhJCJ  <yugiohjcj@1s.fr>
 
 	* README.txt: Move the description above the table of contents.
