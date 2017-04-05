@@ -1,5 +1,5 @@
 -- interaction_areas: A minetest mod to manage interaction areas.
--- Copyright (C) 2016 YuGiOhJCJ
+-- Copyright (C) 2016-2017 YuGiOhJCJ
 
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -97,8 +97,19 @@ function interaction_areas.add_player(name, player_name, interaction_area_id)
 	interaction_areas.save(name)
 	interaction_areas.print(name, "Player added to the existing interaction area(s)")
 end
-function interaction_areas.get_player_position(name)
-	return vector.round(minetest.get_player_by_name(name):getpos())
+function interaction_areas.convert()
+	for _, value in pairs(interaction_areas.interaction_areas) do
+		value[1].x = tonumber(value[1].x)
+		value[1].y = tonumber(value[1].y)
+		value[1].z = tonumber(value[1].z)
+		value[2].x = tonumber(value[2].x)
+		value[2].y = tonumber(value[2].y)
+		value[2].z = tonumber(value[2].z)
+		value[3] = tostring(value[3])
+		if table.getn(value) == 3 then
+			table.insert(value, {})
+		end
+	end
 end
 function interaction_areas.get_interaction_area_id(position, dimension)
 	local position_1 = position
@@ -136,6 +147,9 @@ function interaction_areas.get_offset(dimension)
 		offset_z = -offset_z
 	end
 	return {x = offset_x, y = offset_y, z = offset_z}
+end
+function interaction_areas.get_player_position(name)
+	return vector.round(minetest.get_player_by_name(name):getpos())
 end
 function interaction_areas.help(name, command)
 	if command == "interaction_areas_add" then
@@ -190,20 +204,6 @@ function interaction_areas.help(name, command)
 	else
 		interaction_areas.print(name, "Unable to show the help for an interaction_areas command because the command does not correspond to an existing command")
 		return
-	end
-end
-function interaction_areas.convert()
-	for _, value in pairs(interaction_areas.interaction_areas) do
-		value[1].x = tonumber(value[1].x)
-		value[1].y = tonumber(value[1].y)
-		value[1].z = tonumber(value[1].z)
-		value[2].x = tonumber(value[2].x)
-		value[2].y = tonumber(value[2].y)
-		value[2].z = tonumber(value[2].z)
-		value[3] = tostring(value[3])
-		if table.getn(value) == 3 then
-			table.insert(value, {})
-		end
 	end
 end
 function interaction_areas.load()
@@ -290,14 +290,6 @@ function interaction_areas.remove_player(name, player_name, interaction_area_id)
 	interaction_areas.save(name)
 	interaction_areas.print(name, "Player removed from the existing interaction area(s)")
 end
-function interaction_areas.table_get_key_from_value(my_table, my_value)
-	for key, value in pairs(my_table) do
-		if value == my_value then
-			return key
-		end
-	end
-	return nil
-end
 function interaction_areas.save(name)
 	local data = minetest.serialize(interaction_areas.interaction_areas)
 	if data == nil then
@@ -342,8 +334,16 @@ function interaction_areas.show(name, interaction_area_id)
 	end
 	interaction_areas.print(name, "Interaction area(s) shown")
 end
+function interaction_areas.table_get_key_from_value(my_table, my_value)
+	for key, value in pairs(my_table) do
+		if value == my_value then
+			return key
+		end
+	end
+	return nil
+end
 function interaction_areas.version(name)
-	interaction_areas.print(name, "interaction_areas 20160223")
+	interaction_areas.print(name, "interaction_areas 20170405")
 	interaction_areas.print(name, "By YuGiOhJCJ <yugiohjcj@1s.fr>")
 	interaction_areas.print(name, "http://yugiohjcj.1s.fr/")
 end

@@ -1,5 +1,25 @@
 2017-04-05  YuGiOhJCJ  <yugiohjcj@1s.fr>
 
+	* README.txt: Modified file (replace "20160223" by "20170405").
+
+	* README.txt: Modified file (replace "0.4.13" by "0.4.15").
+
+	* init.lua: Modified file (replace "2016" by "2016-2017").
+
+	* interaction_areas.lua: Modified file (replace "2016" by "2016-2017").
+
+	* interaction_areas.lua(interaction_areas.get_player_position): Modified file (this function is moved to be sorted in alphabetical order).
+
+	* interaction_areas.lua(interaction_areas.convert): Modified file (this function is moved to be sorted in alphabetical order).
+
+	* interaction_areas.lua(interaction_areas.table_get_key_from_value): Modified file (this function is moved to be sorted in alphabetical order).
+
+	* interaction_areas.lua(interaction_areas.version): Modified file (replace "20160223" by "20170405").
+
+	* minetest.lua: Modified file (replace "2016" by "2016-2017").
+
+2017-04-05  YuGiOhJCJ  <yugiohjcj@1s.fr>
+
 	* TODO.txt: Modified file (add the "Accept the "/interaction_areas_show all sort by_owner_name" command" task).
 
 	* TODO.txt: Modified file (add the "Accept the "/interaction_areas_show all sort by_player_name" command" task).

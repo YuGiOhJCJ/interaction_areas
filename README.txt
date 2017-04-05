@@ -1,8 +1,8 @@
 interaction_areas
 
- * Mod version: 20160223
+ * Mod version: 20170405
  * Mod license: GPL 3 or later
- * Minetest version: 0.4.13
+ * Minetest version: 0.4.15
  * Mod dependencies: none
  * Report bugs or request help using my contact address
 
