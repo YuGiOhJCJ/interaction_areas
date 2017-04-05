@@ -13,11 +13,11 @@
 
 -- You should have received a copy of the GNU General Public License
 -- along with this program.  If not, see <http://www.gnu.org/licenses/>.
-function minetest.is_protected(pos, name)
+function minetest.is_protected(position, name)
 	if minetest.check_player_privs(name, {interaction_areas_admin = true}) then
 		return false
 	end
-	local interaction_area_id = interaction_areas.get_interaction_area_id(pos)
+	local interaction_area_id = interaction_areas.get_interaction_area_id_from_position(position)
 	if interaction_area_id == nil then
 		interaction_areas.print(name, "Unable to interact because this is not an interaction area")
 		return true

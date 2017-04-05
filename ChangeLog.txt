@@ -1,152 +1,210 @@
+2017-04-05  YuGiOhJCJ  <yugiohjcj@1s.fr>
+
+	* TODO.txt: Modified file (add the "Accept the "/interaction_areas_show all sort by_owner_name" command" task).
+
+	* TODO.txt: Modified file (add the "Accept the "/interaction_areas_show all sort by_player_name" command" task).
+
+	* TODO.txt: Modified file (add the "Accept the "/interaction_areas_show all sort by_position_x by_position_y by_position_z" command" task).
+
+	* TODO.txt: Modified file (add the "Accept the "/interaction_areas_show all sort by_dimension_x by_dimension_y by_dimension_z" command" task).
+
+	* interaction_areas.lua(interaction_areas.add): Modified file (this function calls the "tonumber" function to convert the "position_x" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.add): Modified file (this function calls the "tonumber" function to convert the "position_y" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.add): Modified file (this function calls the "tonumber" function to convert the "position_z" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.add): Modified file (this function calls the "tonumber" function to convert the "dimension_x" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.add): Modified file (this function calls the "tonumber" function to convert the "dimension_y" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.add): Modified file (this function calls the "tonumber" function to convert the "dimension_z" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.add_player): Modified file (this function calls "interaction_areas.get_interaction_area_id_from_position" instead of "interaction_areas.get_interaction_area_id").
+
+	* interaction_areas.lua(interaction_areas.get_interaction_area_id): Modified file (add this function).
+
+	* interaction_areas.lua(interaction_areas.get_interaction_area_id): Modified file (rename this function to "interaction_areas.get_interaction_area_id_from_position").
+
+	* interaction_areas.lua(interaction_areas.get_offset): Modified file (add this function).
+
+	* interaction_areas.lua(interaction_areas.convert): Modified file (this function calls the "tonumber" function to convert the "value[1].x" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.convert): Modified file (this function calls the "tonumber" function to convert the "value[1].y" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.convert): Modified file (this function calls the "tonumber" function to convert the "value[1].z" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.convert): Modified file (this function calls the "tonumber" function to convert the "value[2].x" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.convert): Modified file (this function calls the "tonumber" function to convert the "value[2].y" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.convert): Modified file (this function calls the "tonumber" function to convert the "value[2].z" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.convert): Modified file (this function calls the "tostring" function to convert the "value[3]" variable to a number).
+
+	* interaction_areas.lua(interaction_areas.remove): Modified file (this function calls "interaction_areas.get_interaction_area_id_from_position" instead of "interaction_areas.get_interaction_area_id").
+
+	* interaction_areas.lua(interaction_areas.remove_player): Modified file (this function calls "interaction_areas.get_interaction_area_id_from_position" instead of "interaction_areas.get_interaction_area_id").
+
+	* interaction_areas.lua(interaction_areas.show): Modified file (this function calls "interaction_areas.get_interaction_area_id_from_position" instead of "interaction_areas.get_interaction_area_id").
+
+	* minetest.lua(minetest.is_protected): Modified file (rename the parameter "pos" to "position").
+
+	* minetest.lua(minetest.is_protected): Modified file (this function calls "interaction_areas.get_interaction_area_id_from_position" instead of "interaction_areas.get_interaction_area_id").
+
+	* screenshot.png: Modified file (contains the exported screenshot).
+
+	* screenshot.xcf: Added file (contains the screenshot).
+
 2016-03-16  YuGiOhJCJ  <yugiohjcj@1s.fr>
 
-	* README.txt: Replace "the interaction_areas_user" by "the interaction_areas_user privilege".
+	* README.txt: Modified file (replace "the interaction_areas_user" by "the interaction_areas_user privilege").
 
 2016-02-24  YuGiOhJCJ  <yugiohjcj@1s.fr>
 
-	* README.txt: Move the description above the table of contents.
+	* README.txt: Modified file (move the description above the table of contents).
 
-	* README.txt: Move the reference to the AUTHORS.txt file below the description.
+	* README.txt: Modified file (move the reference to the AUTHORS.txt file below the description).
 
-	* README.txt: Move the reference to the ChangeLog.txt file below the description.
+	* README.txt: Modified file (move the reference to the ChangeLog.txt file below the description).
 
-	* README.txt: Move the reference to the description.txt file below the description.
+	* README.txt: Modified file (move the reference to the description.txt file below the description).
 
-	* README.txt: Move the reference to the INSTALL.txt file below the description.
+	* README.txt: Modified file (move the reference to the INSTALL.txt file below the description).
 
-	* README.txt: Move the reference to the LICENSE.txt file below the description.
+	* README.txt: Modified file (move the reference to the LICENSE.txt file below the description).
 
-	* README.txt: Move the reference to the TODO.txt file below the description.
+	* README.txt: Modified file (move the reference to the TODO.txt file below the description).
 
-	* README.txt: Replace "list of things left to do" by "list of tasks left to do".
+	* README.txt: Modified file (replace "list of things left to do" by "list of tasks left to do").
 
-	* README.txt: Replace "This minetest mod add" by "This minetest mod adds".
+	* README.txt: Modified file (replace "This minetest mod add" by "This minetest mod adds").
 
-	* README.txt: Remove the "Interact with all interaction areas" item for the interaction_areas_user privilege.
+	* README.txt: Modified file (remove the "Interact with all interaction areas" item for the interaction_areas_user privilege).
 
-	* README.txt: Remove the "Manage players of all interaction areas" item for the interaction_areas_user privilege.
+	* README.txt: Modified file (remove the "Manage players of all interaction areas" item for the interaction_areas_user privilege).
 
-	* README.txt: Add a reference to section 2.1 in section 1.
+	* README.txt: Modified file (add a reference to section 2.1 in section 1).
 
-	* README.txt: Add a reference to section 2.2 in section 1.
+	* README.txt: Modified file (add a reference to section 2.2 in section 1).
 
-	* README.txt: Replace "interact, shout, give, teleport, interaction_areas_user" by "interact, shout, interaction_areas_user".
+	* README.txt: Modified file (replace "interact, shout, give, teleport, interaction_areas_user" by "interact, shout, interaction_areas_user").
 
-	* TODO.txt: Add the "Accept the "/interaction_areas_help" command" task.
+	* TODO.txt: Modified file (add the "Accept the "/interaction_areas_help" command" task).
 
-	* TODO.txt: Add the "Accept the "Accept the "/interaction_areas_help all" command" task.
+	* TODO.txt: Modified file (add the "Accept the "Accept the "/interaction_areas_help all" command" task).
 
 2016-02-23  YuGiOhJCJ  <yugiohjcj@1s.fr>
 
-	* README.txt: Remove the underlines.
+	* README.txt: Modified file (remove the underlines).
 
-	* README.txt: Replace "Version" by "Mod version".
+	* README.txt: Modified file (replace "Version" by "Mod version").
 
-	* README.txt: Replace "License" by "Mod license".
+	* README.txt: Modified file (replace "License" by "Mod license").
 
-	* README.txt: Replace "Dependencies:" by "Mod dependencies".
+	* README.txt: Modified file (replace "Dependencies:" by "Mod dependencies").
 
-	* README.txt: Replace "Report bugs or request help on the forum topic" by "Report bugs or request help using my contact address".
+	* README.txt: Modified file (replace "Report bugs or request help on the forum topic" by "Report bugs or request help using my contact address").
 
-	* README.txt: Add the minetest version.
+	* README.txt: Modified file (add the minetest version).
 
-	* README.txt: Remove installation section (because it is already explained in the INSTALL.txt file).
+	* README.txt: Modified file (remove the "Installation" section because it is already explained in the INSTALL.txt file).
 
-	* README.txt: Add a table of contents.
+	* README.txt: Modified file (add a table of contents).
 
-	* README.txt: Add a "Privileges" section.
+	* README.txt: Modified file (add a "Privileges" section).
 
-	* README.txt: Add a "Commands" section.
+	* README.txt: Modified file (add a "Commands" section).
 
-	* README.txt: Add a reference to the AUTHORS.txt file.
+	* README.txt: Modified file (add a reference to the AUTHORS.txt file).
 
-	* README.txt: Add a reference to the ChangeLog.txt file.
+	* README.txt: Modified file (add a reference to the ChangeLog.txt file).
 
-	* README.txt: Add a reference to the description.txt file.
+	* README.txt: Modified file (add a reference to the description.txt file).
 
-	* README.txt: Add a reference to the INSTALL.txt file.
+	* README.txt: Modified file (add a reference to the INSTALL.txt file).
 
-	* README.txt: Add a reference to the LICENSE.txt file.
+	* README.txt: Modified file (add a reference to the LICENSE.txt file).
 
-	* README.txt: Add a reference to the TODO.txt file.
+	* README.txt: Modified file (add a reference to the TODO.txt file).
 
-	* init.lua: Remove the "interaction_areas" command.
+	* init.lua: Modified file (remove the "interaction_areas" command).
 
-	* init.lua: Add the "interaction_areas_add" command.
+	* init.lua: Modified file (add the "interaction_areas_add" command).
 
-	* init.lua: Add the "interaction_areas_add_player" command.
+	* init.lua: Modified file (add the "interaction_areas_add_player" command).
 
-	* init.lua: Add the "interaction_areas_help" command.
+	* init.lua: Modified file (add the "interaction_areas_help" command).
 
-	* init.lua: Add the "interaction_areas_remove" command.
+	* init.lua: Modified file (add the "interaction_areas_remove" command).
 
-	* init.lua: Add the "interaction_areas_remove_player" command.
+	* init.lua: Modified file (add the "interaction_areas_remove_player" command).
 
-	* init.lua: Add the "interaction_areas_show" command.
+	* init.lua: Modified file (add the "interaction_areas_show" command).
 
-	* init.lua: Add the "interaction_areas_version" command.
+	* init.lua: Modified file (add the "interaction_areas_version" command).
 
-	* init.lua: Remove the "interaction_areas" privilege.
+	* init.lua: Modified file (remove the "interaction_areas" privilege).
 
-	* init.lua: Add the "interaction_areas_admin" privilege.
+	* init.lua: Modified file (add the "interaction_areas_admin" privilege).
 
-	* init.lua: Add the "interaction_areas_user" privilege.
+	* init.lua: Modified file (add the "interaction_areas_user" privilege).
 
-	* interaction_areas.lua(interaction_areas.add): Rename the variable "player_name" to "owner_name".
+	* interaction_areas.lua(interaction_areas.add): Modified file (rename the variable "player_name" to "owner_name").
 
-	* interaction_areas.lua(interaction_areas.add_player): Add this function.
+	* interaction_areas.lua(interaction_areas.add_player): Modified file (add this function).
 
-	* interaction_areas.lua(interaction_areas.help): Handle the case where the "command" variable is affected to the "interaction_areas_add" value.
+	* interaction_areas.lua(interaction_areas.help): Modified file (handle the case where the "command" variable is affected to the "interaction_areas_add" value).
 
-	* interaction_areas.lua(interaction_areas.help): Handle the case where the "command" variable is affected to the "interaction_areas_add_player" value.
+	* interaction_areas.lua(interaction_areas.help): Modified file (handle the case where the "command" variable is affected to the "interaction_areas_add_player" value).
 
-	* interaction_areas.lua(interaction_areas.help): Handle the case where the "command" variable is affected to the "interaction_areas_help" value.
+	* interaction_areas.lua(interaction_areas.help): Modified file (handle the case where the "command" variable is affected to the "interaction_areas_help" value).
 
-	* interaction_areas.lua(interaction_areas.help): Handle the case where the "command" variable is affected to the "interaction_areas_remove" value.
+	* interaction_areas.lua(interaction_areas.help): Modified file (handle the case where the "command" variable is affected to the "interaction_areas_remove" value).
 
-	* interaction_areas.lua(interaction_areas.help): Handle the case where the "command" variable is affected to the "interaction_areas_remove_player" value.
+	* interaction_areas.lua(interaction_areas.help): Modified file (handle the case where the "command" variable is affected to the "interaction_areas_remove_player" value).
 
-	* interaction_areas.lua(interaction_areas.help): Handle the case where the "command" variable is affected to the "interaction_areas_show" value.
+	* interaction_areas.lua(interaction_areas.help): Modified file (handle the case where the "command" variable is affected to the "interaction_areas_show" value).
 
-	* interaction_areas.lua(interaction_areas.help): Handle the case where the "command" variable is affected to the "interaction_areas_version" value.
+	* interaction_areas.lua(interaction_areas.help): Modified file (handle the case where the "command" variable is affected to the "interaction_areas_version" value).
 
-	* interaction_areas.lua(interaction_areas.help): Do not handle the case where the "command" variable is affected to the "add" value anymore.
+	* interaction_areas.lua(interaction_areas.help): Modified file (do not handle the case where the "command" variable is affected to the "add" value anymore).
 
-	* interaction_areas.lua(interaction_areas.help): Do not handle the case where the "command" variable is affected to the "help" value anymore.
+	* interaction_areas.lua(interaction_areas.help): Modified file (do not handle the case where the "command" variable is affected to the "help" value anymore).
 
-	* interaction_areas.lua(interaction_areas.help): Do not handle the case where the "command" variable is affected to the "remove" value anymore.
+	* interaction_areas.lua(interaction_areas.help): Modified file (do not handle the case where the "command" variable is affected to the "remove" value anymore).
 
-	* interaction_areas.lua(interaction_areas.help): Do not handle the case where the "command" variable is affected to the "show" value anymore.
+	* interaction_areas.lua(interaction_areas.help): Modified file (do not handle the case where the "command" variable is affected to the "show" value anymore).
 
-	* interaction_areas.lua(interaction_areas.help): Replace "Show the help for a command" by "Show the help for an interaction_areas command".
+	* interaction_areas.lua(interaction_areas.help): Modified file (replace "Show the help for a command" by "Show the help for an interaction_areas command").
 
-	* interaction_areas.lua(interaction_areas.help): Replace "Unable [...] for a command [...]" by "Unable [...] for an interaction_areas command [...]".
+	* interaction_areas.lua(interaction_areas.help): Modified file (replace "Unable [...] for a command [...]" by "Unable [...] for an interaction_areas command [...]").
 
-	* interaction_areas.lua(interaction_areas.convert): Add this function.
+	* interaction_areas.lua(interaction_areas.convert): Modified file (add this function).
 
-	* interaction_areas.lua(interaction_areas.load): Add a call to the "interaction_areas.convert" function.
+	* interaction_areas.lua(interaction_areas.load): Modified file (add a call to the "interaction_areas.convert" function).
 
-	* interaction_areas.lua(interaction_areas.remove): Change the three values of the "for" in order to remove correctly all the interaction areas.
+	* interaction_areas.lua(interaction_areas.remove): Modified file (change the three values of the "for" in order to remove correctly all the interaction areas).
 
-	* interaction_areas.lua(interaction_areas.remove_player): Add this function.
+	* interaction_areas.lua(interaction_areas.remove_player): Modified file (add this function).
 
-	* interaction_areas.lua(interaction_areas.table_get_key_from_value): Add this function.
+	* interaction_areas.lua(interaction_areas.table_get_key_from_value): Modified file (add this function).
 
-	* interaction_areas.lua(interaction_areas.show): Replace "id" by "ID".
+	* interaction_areas.lua(interaction_areas.show): Modified file (replace "id" by "ID").
 
-	* interaction_areas.lua(interaction_areas.show): Replace "(dimension_x, [...]) player_name)" by "owner_name (dimension_x, [...]) player_name, ...".
+	* interaction_areas.lua(interaction_areas.show): Modified file (replace "(dimension_x, [...]) player_name)" by "owner_name (dimension_x, [...]) player_name, ...").
 
-	* interaction_areas.lua(interaction_areas.show): Show the player names.
+	* interaction_areas.lua(interaction_areas.show): Modified file (show the player names).
 
-	* interaction_areas.lua(interaction_areas.version): Replace "1.00" by "20160223".
+	* interaction_areas.lua(interaction_areas.version): Modified file (replace "1.00" by "20160223").
 
-	* minetest.lua(minetest.is_protected): Replace "interaction_areas = true" by "interaction_areas_admin = true".
+	* minetest.lua(minetest.is_protected): Modified file (replace "interaction_areas = true" by "interaction_areas_admin = true").
 
-	* minetest.lua(minetest.is_protected): Do not use "elseif" anymore (because a value is returned).
+	* minetest.lua(minetest.is_protected): Modified file (do not use "elseif" anymore because a value is returned).
 
-	* minetest.lua(minetest.is_protected): Do not use "else" anymore (because a value is returned).
+	* minetest.lua(minetest.is_protected): Modified file (do not use "else" anymore because a value is returned).
 
-	* minetest.lua(minetest.is_protected): Check for the player names.
+	* minetest.lua(minetest.is_protected): Modified file (check for the player names).
 
 2016-02-15  YuGiOhJCJ  <yugiohjcj@1s.fr>
 

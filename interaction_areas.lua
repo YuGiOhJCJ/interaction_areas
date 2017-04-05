@@ -17,29 +17,35 @@ interaction_areas = {}
 interaction_areas.filename = minetest.get_worldpath() .. "/interaction_areas.dat"
 interaction_areas.interaction_areas = {}
 function interaction_areas.add(name, position_x, position_y, position_z, owner_name, dimension_x, dimension_y, dimension_z)
-	if position_x == ""
-		and position_y == ""
-		and position_z == "" then
+	position_x = tonumber(position_x)
+	position_y = tonumber(position_y)
+	position_z = tonumber(position_z)
+	dimension_x = tonumber(dimension_x)
+	dimension_y = tonumber(dimension_y)
+	dimension_z = tonumber(dimension_z)
+	if position_x == nil
+		and position_y == nil
+		and position_z == nil then
 		position_x = interaction_areas.get_player_position(name).x
 		position_y = interaction_areas.get_player_position(name).y
 		position_z = interaction_areas.get_player_position(name).z
 	end
-	if position_y == "" then
+	if position_y == nil then
 		position_y = position_x
 	end
-	if position_z == "" then
+	if position_z == nil then
 		position_z = position_y
 	end
-	if dimension_x == "" then
+	if dimension_x == nil then
 		dimension_x = 1
 	end
-	if dimension_y == "" then
+	if dimension_y == nil then
 		dimension_y = dimension_x
 	end
-	if dimension_z == "" then
+	if dimension_z == nil then
 		dimension_z = dimension_y
 	end
-	if interaction_areas.get_interaction_area_id({x = position_x, y = position_y, z = position_z}) ~= nil then
+	if interaction_areas.get_interaction_area_id({x = position_x, y = position_y, z = position_z}, {x = dimension_x, y = dimension_y, z = dimension_z}) ~= nil then
 		interaction_areas.print(name, "Unable to add an interaction area to the existing interaction areas because there is already an existing interaction area at this position")
 		return
 	end
@@ -51,7 +57,7 @@ function interaction_areas.add_player(name, player_name, interaction_area_id)
 	local index_min = 1
 	local index_max = 0
 	if interaction_area_id == "" then
-		index_min = interaction_areas.get_interaction_area_id(interaction_areas.get_player_position(name))
+		index_min = interaction_areas.get_interaction_area_id_from_position(interaction_areas.get_player_position(name))
 		index_max = index_min
 	elseif tonumber(interaction_area_id) ~= nil then
 		index_min = tonumber(interaction_area_id)
@@ -94,20 +100,42 @@ end
 function interaction_areas.get_player_position(name)
 	return vector.round(minetest.get_player_by_name(name):getpos())
 end
-function interaction_areas.get_interaction_area_id(position)
+function interaction_areas.get_interaction_area_id(position, dimension)
+	local position_1 = position
+	local offset = interaction_areas.get_offset(dimension)
+	local position_2 = {x = position_1.x + dimension.x + offset.x, y = position_1.y + dimension.y + offset.y, z = position_1.z + dimension.z + offset.z}
 	for key, value in pairs(interaction_areas.interaction_areas) do
-		local position_1 = value[1]
-		local position_2 = {x = position_1.x + value[2].x - 1, y = position_1.y + value[2].y - 1, z = position_1.z + value[2].z - 1}
-		if position.x >= math.min(position_1.x, position_2.x)
-			and position.x <= math.max(position_1.x, position_2.x)
-			and position.y >= math.min(position_1.y, position_2.y)
-			and position.y <= math.max(position_1.y, position_2.y)
-			and position.z >= math.min(position_1.z, position_2.z)
-			and position.z <= math.max(position_1.z, position_2.z) then
+		local position_3 = value[1]
+		offset = interaction_areas.get_offset(value[2])
+		local position_4 = {x = position_3.x + value[2].x + offset.x, y = position_3.y + value[2].y + offset.y, z = position_3.z + value[2].z + offset.z}
+		if math.max(position_1.x, position_2.x) >= math.min(position_3.x, position_4.x)
+			and math.min(position_1.x, position_2.x) <= math.max(position_3.x, position_4.x)
+			and math.max(position_1.y, position_2.y) >= math.min(position_3.y, position_4.y)
+			and math.min(position_1.y, position_2.y) <= math.max(position_3.y, position_4.y)
+			and math.max(position_1.z, position_2.z) >= math.min(position_3.z, position_4.z)
+			and math.min(position_1.z, position_2.z) <= math.max(position_3.z, position_4.z) then
 			return key
 		end
 	end
 	return nil
+end
+function interaction_areas.get_interaction_area_id_from_position(position)
+	return interaction_areas.get_interaction_area_id(position, {x = 1, y = 1, z = 1})
+end
+function interaction_areas.get_offset(dimension)
+	local offset_x = 1
+	local offset_y = 1
+	local offset_z = 1
+	if dimension.x > 0 then
+		offset_x = -offset_x
+	end
+	if dimension.y > 0 then
+		offset_y = -offset_y
+	end
+	if dimension.z > 0 then
+		offset_z = -offset_z
+	end
+	return {x = offset_x, y = offset_y, z = offset_z}
 end
 function interaction_areas.help(name, command)
 	if command == "interaction_areas_add" then
@@ -166,6 +194,13 @@ function interaction_areas.help(name, command)
 end
 function interaction_areas.convert()
 	for _, value in pairs(interaction_areas.interaction_areas) do
+		value[1].x = tonumber(value[1].x)
+		value[1].y = tonumber(value[1].y)
+		value[1].z = tonumber(value[1].z)
+		value[2].x = tonumber(value[2].x)
+		value[2].y = tonumber(value[2].y)
+		value[2].z = tonumber(value[2].z)
+		value[3] = tostring(value[3])
 		if table.getn(value) == 3 then
 			table.insert(value, {})
 		end
@@ -190,7 +225,7 @@ function interaction_areas.remove(name, interaction_area_id)
 	local index_min = 1
 	local index_max = 0
 	if interaction_area_id == "" then
-		index_min = interaction_areas.get_interaction_area_id(interaction_areas.get_player_position(name))
+		index_min = interaction_areas.get_interaction_area_id_from_position(interaction_areas.get_player_position(name))
 		index_max = index_min
 	elseif tonumber(interaction_area_id) ~= nil then
 		index_min = tonumber(interaction_area_id)
@@ -220,7 +255,7 @@ function interaction_areas.remove_player(name, player_name, interaction_area_id)
 	local index_min = 1
 	local index_max = 0
 	if interaction_area_id == "" then
-		index_min = interaction_areas.get_interaction_area_id(interaction_areas.get_player_position(name))
+		index_min = interaction_areas.get_interaction_area_id_from_position(interaction_areas.get_player_position(name))
 		index_max = index_min
 	elseif tonumber(interaction_area_id) ~= nil then
 		index_min = tonumber(interaction_area_id)
@@ -281,7 +316,7 @@ function interaction_areas.show(name, interaction_area_id)
 	local index_min = 1
 	local index_max = 0
 	if interaction_area_id == "" then
-		index_min = interaction_areas.get_interaction_area_id(interaction_areas.get_player_position(name))
+		index_min = interaction_areas.get_interaction_area_id_from_position(interaction_areas.get_player_position(name))
 		index_max = index_min
 	elseif tonumber(interaction_area_id) ~= nil then
 		index_min = tonumber(interaction_area_id)

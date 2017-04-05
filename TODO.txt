@@ -1,2 +1,6 @@
 Accept the "/interaction_areas_help" command.
 Accept the "/interaction_areas_help all" command.
+Accept the "/interaction_areas_show all sort by_owner_name" command.
+Accept the "/interaction_areas_show all sort by_player_name" command.
+Accept the "/interaction_areas_show all sort by_position_x by_position_y by_position_z" command.
+Accept the "/interaction_areas_show all sort by_dimension_x by_dimension_y by_dimension_z" command.
