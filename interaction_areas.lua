@@ -343,7 +343,7 @@ function interaction_areas.table_get_key_from_value(my_table, my_value)
 	return nil
 end
 function interaction_areas.version(name)
-	interaction_areas.print(name, "interaction_areas 20170405")
+	interaction_areas.print(name, "interaction_areas 20170822")
 	interaction_areas.print(name, "By YuGiOhJCJ <yugiohjcj@1s.fr>")
 	interaction_areas.print(name, "http://yugiohjcj.1s.fr/")
 end

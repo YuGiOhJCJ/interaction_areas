@@ -1,5 +1,13 @@
 2017-08-22  YuGiOhJCJ  <yugiohjcj@1s.fr>
 
+	* README.txt: Modified file (replace "20170405" by "20170822").
+
+	* README.txt: Modified file (replace "0.4.15" by "0.4.16").
+
+	* interaction_areas.lua(interaction_areas.version): Modified file (replace "20170405" by "20170822").
+
+2017-08-22  YuGiOhJCJ  <yugiohjcj@1s.fr>
+
 	* init.lua: Modified file (accept the player names containing the "_" character).
 
 	* init.lua: Modified file (accept the player names containing the "-" character).
