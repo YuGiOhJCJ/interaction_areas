@@ -1,3 +1,9 @@
+2017-08-22  YuGiOhJCJ  <yugiohjcj@1s.fr>
+
+	* init.lua: Modified file (accept the player names containing the "_" character).
+
+	* init.lua: Modified file (accept the player names containing the "-" character).
+
 2017-04-05  YuGiOhJCJ  <yugiohjcj@1s.fr>
 
 	* README.txt: Modified file (replace "20160223" by "20170405").

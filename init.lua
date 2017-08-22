@@ -20,7 +20,7 @@ minetest.register_chatcommand("interaction_areas_add", {
 	description = "Add an interaction area to the existing interaction areas",
 	privs = {interaction_areas_admin = true},
 	func = function(name, param)
-		local position_x, position_y, position_z, owner_name, dimension_x, dimension_y, dimension_z = string.match(param, "^%s*(%-?%d*)%s*(%-?%d*)%s*(%-?%d*)%s*(%w+)%s*(%-?%d*)%s*(%-?%d*)%s*(%-?%d*)%s*$")
+		local position_x, position_y, position_z, owner_name, dimension_x, dimension_y, dimension_z = string.match(param, "^%s*(%-?%d*)%s*(%-?%d*)%s*(%-?%d*)%s*([%w_%-]+)%s*(%-?%d*)%s*(%-?%d*)%s*(%-?%d*)%s*$")
 		if position_x ~= nil
 			and position_y ~= nil
 			and position_z ~= nil
@@ -39,7 +39,7 @@ minetest.register_chatcommand("interaction_areas_add_player", {
 	description = "Add a player to one or more existing interaction areas",
 	privs = {interaction_areas_user = true},
 	func = function(name, param)
-		local player_name, interaction_area_id = string.match(param, "^%s*(%w+)%s*(%w*)%s*$")
+		local player_name, interaction_area_id = string.match(param, "^%s*([%w_%-]+)%s*(%w*)%s*$")
 		if player_name ~= nil
 			and interaction_area_id ~= nil
 			and (interaction_area_id == "" or tonumber(interaction_area_id) ~= nil or interaction_area_id == "all") then
@@ -81,7 +81,7 @@ minetest.register_chatcommand("interaction_areas_remove_player", {
 	description = "Remove a player from one or more existing interaction areas",
 	privs = {interaction_areas_user = true},
 	func = function(name, param)
-		local player_name, interaction_area_id = string.match(param, "^%s*(%w+)%s*(%w*)%s*$")
+		local player_name, interaction_area_id = string.match(param, "^%s*([%w_%-]+)%s*(%w*)%s*$")
 		if player_name ~= nil
 			and interaction_area_id ~= nil
 			and (interaction_area_id == "" or tonumber(interaction_area_id) ~= nil or interaction_area_id == "all") then
